@@ -1,0 +1,43 @@
+import pygame
+import sys
+pygame.init()
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+class Button():
+    def __init__(self,x,y,image):
+        self.image = self.image
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (x,y)
+
+    def draw(self):
+        screen.blit(self.image,(self.rect.x,self.rect.y))
+
+
+pygame.display.set_caption("Jordle")
+run = True
+while run:
+    WIDTH = 600
+    HEIGHT = 800
+    screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    font = pygame.font.Font(None, 40)
+    text = font.render("JORDLE", False, (234, 13, 234))
+    screen.fill((255, 255, 255))
+    screen.blit(text, (200, 400))
+
+    start_img = pygame.image.load("start.png").convert()
+    exit_img = pygame.image.load("quit.png").convert()
+    new_start = pygame.transform.scale(start_img, (200, 100))
+    new_exit = pygame.transform.scale(exit_img, (200, 100))
+    screen.blit(new_start, (195, 500))
+    screen.blit(new_exit, (195, 600))
+
+    pygame.display.flip()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
+
+    pygame.display.update()
+pygame.quit()
