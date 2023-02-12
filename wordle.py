@@ -153,7 +153,7 @@ def game():
 
                 if event.key == K_BACKSPACE:
                     guess=""
-                    window.fill(black, (0, 80, 600, 100))
+                    window.fill(black, (0, 98, 600, 100))
 
 
         window.fill(black, (0, 600, 600, 200))
