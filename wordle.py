@@ -1,4 +1,5 @@
 import random, pygame, sys
+import numpy as np
 from pygame.locals import *
 pygame.init()
 
@@ -60,21 +61,43 @@ def checkGuess(turns, word, userGuess, window):
 
 def main():
     game()
-    screen = pygame.display.set_mode((600, 800))
-    logo = pygame.image.load("jordle.png").convert()
-    n_logo = pygame.transform.scale(logo, (300, 150))
-    screen.blit(n_logo, (150, 150))
-    #pygame.display.flip()
-    pygame.display.update()
+
 
 
 
 
 def game():
     file = open("wordList.txt", "r")
+    file2 = open("english.txt", "r")
     wordList = file.readlines()  # creates list that contains each line of the text file as an element?
+    english = file2.readlines()
+
+
     word = wordList[
-        random.randint(0, len(wordList) - 1)].upper()  # holds randomly selected word in the text file in all uppercase?
+        random.randint(0, len(wordList)-1)].upper()  # holds randomly selected word in the text file in all uppercase?
+
+    word=word.strip()
+
+    print(word)
+    print(wordList[0].strip().upper())
+
+    index = 2
+    for i in range(0, len(wordList)):
+        if word == wordList[i].strip().upper():
+            index = i
+
+    print(index)
+    print(wordList)
+
+
+
+    #print(wordList)
+
+    englishword = english[index]
+    englishword=englishword.strip()
+    renderword = font.render(englishword, True, (70, 70, 70))
+
+
 
     height = 600
     width = 500
@@ -84,6 +107,8 @@ def game():
 
     window = pygame.display.set_mode((width, height))  # does this create the render window?
     window.fill(black)  # fills surface with a solid color?
+
+    window.blit(renderword, (200, 75))
 
     guess = ""
 
@@ -130,13 +155,17 @@ def game():
                     guess=""
                     window.fill(black, (0, 80, 600, 100))
 
+
         window.fill(black, (0, 600, 600, 200))
         renderGuess = font.render(guess, True, (70, 70, 70))
         window.blit(renderGuess, (200, 140))
+        #window.blit(renderword, (200, 75))
+
+
 
 
         if win == True:
-            window.blit(youWin, (90, 200))
+            window.blit(youWin, (120, 100))
 
 
         if turns == 6 and win != True:
@@ -145,27 +174,3 @@ def game():
             # screen.blit(text, (width / 2 + 50, height / 2))
         pygame.display.update()
         clock.tick(FPS)
-
-
-
-main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-                
-
-    
-
