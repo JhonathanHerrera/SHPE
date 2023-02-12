@@ -37,7 +37,7 @@ def checkGuess(turns, word, userGuess, window):
     spacing =0
     guessColourCode = [grey,grey,grey,grey,grey]
 
-    window.fill(black, (0, 80, 600, 100))
+    #window.fill(black, (0, 80, 600, 100))
 
     for x in range(0,5):
         if userGuess[x] in word:
@@ -146,7 +146,7 @@ def game():
                     win = checkGuess(turns, word, guess, window)
                     turns += 1
                     guess = ""
-                    window.fill(black, (0,600, 600, 200))
+                    #window.fill(black, (0,600, 600, 200))
 
                 if event.key == K_TAB:
                     game()
